@@ -3,7 +3,7 @@
     <h1>Detalle de Agencia</h1>
   </header>
   <section class="form">
-    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <form [formGroup]="presenter.form" (ngSubmit)="onSubmit()">
       <input type="hidden" name="id" formControlName="id" />
       <div class="form-control">
         <label for="">Agencia</label>

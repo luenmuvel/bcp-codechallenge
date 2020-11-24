@@ -4,10 +4,13 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { AgencyService } from './../../services/agencies.services';
 import { IAgency } from './../../interfaces/IAgency';
 
+import { Presenter } from './presenter/form.presenter';
+
 @Component({
   selector: 'bcp-agency-detail',
   templateUrl: './agency-detail.component.html',
   styleUrls: ['./agency-detail.component.scss'],
+  providers: [Presenter],
 })
 export class AgencyDetailComponent implements OnInit {
   Agency: IAgency;
@@ -16,16 +19,8 @@ export class AgencyDetailComponent implements OnInit {
   lat: number;
   lon: number;
 
-  form = new FormGroup({
-    id: new FormControl(''),
-    agencia: new FormControl(''),
-    direccion: new FormControl(''),
-    distrito: new FormControl(''),
-    lat: new FormControl(''),
-    lon: new FormControl(''),
-  });
-
   constructor(
+    public presenter: Presenter,
     public agencyService: AgencyService,
     public router: Router,
     public route: ActivatedRoute
@@ -41,12 +36,7 @@ export class AgencyDetailComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.form.controls['id'].setValue(this.Agency.id);
-    this.form.controls['agencia'].setValue(this.Agency.agencia);
-    this.form.controls['direccion'].setValue(this.Agency.direccion);
-    this.form.controls['distrito'].setValue(this.Agency.distrito);
-    this.form.controls['lat'].setValue(this.Agency.lat);
-    this.form.controls['lon'].setValue(this.Agency.lon);
+    this.presenter.setForm(this.Agency);
   }
 
   setMap(): void {
@@ -55,7 +45,7 @@ export class AgencyDetailComponent implements OnInit {
   }
 
   onSubmit(): void {
-    this.agencyService.save(this.id, this.form.value);
+    this.agencyService.save(this.id, this.presenter.toJsonForm());
     this.router.navigate(['/list']);
   }
 
