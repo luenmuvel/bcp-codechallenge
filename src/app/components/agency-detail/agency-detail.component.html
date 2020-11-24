@@ -1,0 +1,63 @@
+<div class="agencies-container">
+  <header>
+    <h1>Detalle de Agencia</h1>
+  </header>
+  <section class="form">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <input type="hidden" name="id" formControlName="id" />
+      <div class="form-control">
+        <label for="">Agencia</label>
+        <input
+          type="text"
+          name="agencia"
+          formControlName="agencia"
+          placeholder="Agencia"
+        />
+      </div>
+      <div class="form-control">
+        <label for="">Dirección</label>
+        <input
+          type="text"
+          name="direccion"
+          formControlName="direccion"
+          placeholder="Dirección"
+        />
+      </div>
+      <div class="form-control">
+        <label for="">Distrito</label>
+        <input
+          type="text"
+          name="distrito"
+          formControlName="distrito"
+          placeholder="Distrito"
+        />
+      </div>
+      <div class="form-control">
+        <label for="">Latitud</label>
+        <input
+          type="text"
+          name="lat"
+          formControlName="lat"
+          placeholder="Latitud"
+        />
+      </div>
+      <div class="form-control">
+        <label for="">Longitud</label>
+        <input
+          type="text"
+          name="lon"
+          formControlName="lon"
+          placeholder="Longitud"
+        />
+      </div>
+      <div class="map">
+        <agm-map [latitude]="lat" [longitude]="lon">
+          <agm-marker [latitude]="lat" [longitude]="lon"></agm-marker>
+        </agm-map>
+      </div>
+      <div class="form-control">
+        <button type="submit" class="btn-update">Actualizar</button>
+      </div>
+    </form>
+  </section>
+</div>

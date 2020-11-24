@@ -1,0 +1,34 @@
+<div class="agencies-container">
+  <header>
+    <h1>Agencias</h1>
+    <ul>
+      <li><i class="fas fa-search"></i></li>
+      <li>
+        <span class="icon-circle">
+          <i class="fas fa-check"></i>
+        </span>
+      </li>
+    </ul>
+  </header>
+  <section class="list">
+    <ul>
+      <li class="card-agency" *ngFor="let item of agencies">
+        <!-- esto lo acabo de poner -->
+        <div class="card" *ngIf="item.id" (click)="viewDetail(item.id)">
+          <div class="user-image">
+            <img src="assets/user.png" alt="" />
+          </div>
+          <div class="agency-item">
+            <h3>{{ item.agencia }}</h3>
+            <span class="agency-item--city">{{ item.distrito }}</span>
+            <span class="agency-item--address">{{ item.direccion }}</span>
+          </div>
+          <div class="star-icon"><i class="far fa-star"></i></div>
+        </div>
+      </li>
+    </ul>
+  </section>
+  <div class="plus">
+    <i class="fas fa-plus"></i>
+  </div>
+</div>
