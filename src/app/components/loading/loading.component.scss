@@ -1,0 +1,29 @@
+* {
+  padding: 0;
+  margin: 0;
+  font-size: 62.5%;
+}
+.loading {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
+  background-color: hsla(0, 0, 100%, 1);
+  z-index: 100;
+
+  img {
+    width: 80%;
+    animation: loading 0.5s linear infinite;
+  }
+
+  @keyframes loading {
+    50% {
+      opacity: 0.3;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+}
