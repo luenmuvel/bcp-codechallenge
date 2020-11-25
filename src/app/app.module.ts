@@ -28,7 +28,7 @@ import { LoadingDirective } from './directives/login.directive';
     ReactiveFormsModule,
     RoutingModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyBxKlRa7RWUYONNNyah9ChwvtDCpvqXZIw',
+      apiKey: '',
     }),
   ],
   providers: [AgencyService],
